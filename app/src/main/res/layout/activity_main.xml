@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    >
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="activity"
+            type="dev.oth.andstudy.MainActivity" />
+        <variable
+            name="vm"
+            type="dev.oth.andstudy.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/tvBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="100dp"
+            android:text="switch visible"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:onClick="@{()->vm.reverseTextDisplaying()}"
+            />
+
+        <TextView
+            android:id="@+id/tvBtnSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:text="update text"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:onClick="@{()->activity.onClickBtn()}"
+            />
+
+        <TextView
+            android:id="@+id/tvBtnThird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvBtnSecond"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            android:text="next Activity"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:onClick="@{()->activity.onClickSubActivity()}"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.tvText}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{vm.isTextDisplaying() ? View.VISIBLE : View.GONE}"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
